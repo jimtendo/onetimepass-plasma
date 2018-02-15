@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+ <qresource>
+    <file>qml/MainWindow.qml</file>
+    <file>qml/OTPDelegate.qml</file>
+ </qresource>
+</RCC>

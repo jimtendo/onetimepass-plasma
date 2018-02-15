@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=OneTimePass
+Comment=Copies a token from OneTimePass to the clipboard
+X-KDE-ServiceTypes=Plasma/Runner
+Type=Service
+Icon=clock
+X-KDE-Library=krunner_onetimepass
+X-KDE-PluginInfo-Author=James Augustus Zuccon
+X-KDE-PluginInfo-Email=zuccon@gmail.com
+X-KDE-PluginInfo-Name=OneTimePass
+X-KDE-PluginInfo-Version=1.0.3
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+X-Plasma-AdvertiseSingleRunnerQueryMode=true

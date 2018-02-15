@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=One Time Pass
+Exec=onetimepass %u
+Icon=clock
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Qt;KDE;Utilities;
+MimeType=x-scheme-handler/otpauth;
