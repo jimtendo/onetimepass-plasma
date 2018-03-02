@@ -18,7 +18,7 @@ OTP Keys are stored in KWallet under the Default KDE Wallet (usually "kdewallet"
 git clone https://github.com/jimtendo/onetimepass-plasma
 cd onetimepass-plasma
 mkdir build
-cmake ../
+cmake -D KDE_INSTALL_USE_QT_SYS_PATHS=ON ../
 make
 sudo make install
 ```
