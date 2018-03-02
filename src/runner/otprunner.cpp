@@ -55,19 +55,20 @@ OTPRunner::~OTPRunner()
 
 QList<QAction*> OTPRunner::actionsForMatch(const Plasma::QueryMatch &match)
 {
+    Q_UNUSED(match);
+  
     QList<QAction*> actions;
-    
-    qInfo() << match.id();
-    
-    if (match.type() != Plasma::QueryMatch::HelperMatch) {
-        actions << action("delete");
-    }
     
     return actions;    
 }
 
 void OTPRunner::match(Plasma::RunnerContext &context)
 {
+    // Make sure wallet is open
+    if (!m_wallet) {
+        return;
+    }
+  
     // Make sure command starts with "otp"
     if (context.isValid() && context.query().startsWith(QLatin1String("otp "), Qt::CaseInsensitive)) {
         
@@ -120,8 +121,6 @@ void OTPRunner::run(const Plasma::RunnerContext &context, const Plasma::QueryMat
     
     if (match.type() == Plasma::QueryMatch::HelperMatch) {
         QProcess::startDetached("onetimepass");
-    } else if (match.selectedAction()) {
-        qInfo() << "Selected Action";
     } else {
         QClipboard *clipboard = QApplication::clipboard();
         clipboard->setText(match.subtext());

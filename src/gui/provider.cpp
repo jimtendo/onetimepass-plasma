@@ -64,11 +64,20 @@ Provider::Provider(QObject* parent)
 
 Provider::~Provider()
 {
-  
+    
+}
+
+bool Provider::isWalletOpen()
+{
+    return m_wallet ? true : false;
 }
 
 QVariantList Provider::qmlTokens()
 {
+    if (!m_wallet) {
+        return QVariantList();
+    }
+  
     QVariantList tokens;
   
     // Open the KWallet folder

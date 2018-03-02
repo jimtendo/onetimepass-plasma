@@ -47,6 +47,8 @@ public:
     Provider(QObject* parent = 0);
     ~Provider();
     
+    Q_INVOKABLE bool isWalletOpen();
+    
     QVariantList qmlTokens();
     Q_INVOKABLE QVariantMap addEntry(QString name, QString token);
     Q_INVOKABLE void removeEntry(QString name);
@@ -75,7 +77,7 @@ signals:
     
 private:
     QTimer *m_timer;
-    Wallet *m_wallet;
+    Wallet *m_wallet = 0;
     
     QString generateTotpCode(QString secret);
   

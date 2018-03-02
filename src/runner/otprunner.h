@@ -41,7 +41,7 @@ class OTPRunner : public Plasma::AbstractRunner
     void run(const Plasma::RunnerContext &context, const Plasma::QueryMatch &match);
     
   private:
-    Wallet *m_wallet; 
+    Wallet *m_wallet = 0; 
     
     QString generateTotpCode(QString secret);
 };

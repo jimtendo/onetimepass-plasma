@@ -4,6 +4,7 @@
 
 #include <QQmlApplicationEngine>
 #include <QString>
+#include <QTimer>
 
 MainWindow::MainWindow(int &argc, char **argv) :
     QApplication(argc, argv)
@@ -11,10 +12,8 @@ MainWindow::MainWindow(int &argc, char **argv) :
     setApplicationDisplayName(tr("OneTimePass"));
     setApplicationVersion("0.1");
     
-    
-
     // Make the application exit when window is closed
-    connect(this, SIGNAL(lastWindowClosed()), this, SLOT(quit()));
+    setQuitOnLastWindowClosed(true);
 
     // Create Provider Singleton and register it
     qmlRegisterSingletonType<Provider>("org.kde.onetimepass.provider", 1, 0, "Provider", Provider::SingletonProvider);
@@ -27,5 +26,5 @@ MainWindow::MainWindow(int &argc, char **argv) :
 
 MainWindow::~MainWindow()
 {
-
+    delete m_qmlEngine;
 }

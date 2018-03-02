@@ -16,7 +16,7 @@ Kirigami.ApplicationWindow {
     pageStack.initialPage: mainPageComponent
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
-
+    
     Component {
         id: mainPageComponent
         Kirigami.ScrollablePage {
@@ -24,6 +24,7 @@ Kirigami.ApplicationWindow {
             actions {
                 main: Kirigami.Action {
                     iconName: "list-add"
+                    visible: Provider.isWalletOpen()
                     onTriggered: {
                         root.pageStack.push(addEntry);
                     }
@@ -39,6 +40,19 @@ Kirigami.ApplicationWindow {
                     //token: modelData.token
                 }
                 focus: true
+            }
+            Controls.Dialog {
+                id: disabledDialog
+                modal: true
+                visible: Provider.isWalletOpen() ? false : true
+                title: "KWallet Subsystem Disabled"
+                standardButtons: Controls.Dialog.Ok
+                Controls.Label {
+                  width: disabledDialog.availableWidth
+                  text: "KWallet subsystem must be enabled to use OneTimePass. Please enable KWallet and restart the application."
+                  wrapMode: Controls.Label.Wrap
+                }
+                onAccepted: Qt.quit()
             }
         }
     }
