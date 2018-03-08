@@ -64,7 +64,7 @@ Provider::Provider(QObject* parent)
 
 Provider::~Provider()
 {
-    
+    delete m_wallet;
 }
 
 bool Provider::isWalletOpen()
