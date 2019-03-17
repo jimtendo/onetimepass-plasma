@@ -14,6 +14,8 @@ public:
     explicit MainWindow(int &argc, char **argv);
     ~MainWindow();
     
+    QVariantMap parseOTPAuthURL(QString Url);
+    
 private:
     QQmlApplicationEngine *m_qmlEngine;
     Provider *m_provider;

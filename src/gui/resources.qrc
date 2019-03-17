@@ -3,5 +3,6 @@
  <qresource>
     <file>qml/MainWindow.qml</file>
     <file>qml/OTPDelegate.qml</file>
+    <file>qml/AddEntry.qml</file>
  </qresource>
 </RCC>

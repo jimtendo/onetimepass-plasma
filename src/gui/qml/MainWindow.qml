@@ -25,6 +25,7 @@ Kirigami.ApplicationWindow {
                 main: Kirigami.Action {
                     iconName: "list-add"
                     visible: Provider.isWalletOpen()
+                    tooltip: "Add new token"
                     onTriggered: {
                         root.pageStack.push(addEntry);
                     }
@@ -57,40 +58,20 @@ Kirigami.ApplicationWindow {
         }
     }
     
-    Component {
-        id: addEntry
-        Kirigami.ScrollablePage {
-            title: "Add Entry"
-            ColumnLayout {
-                Controls.Label {
-                    text: "Name:"
-                }
-                Controls.TextField {
-                    id: name
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    text: ""
-                    Layout.alignment: Qt.AlignHCenter
-                }
-                Controls.Label {
-                    text: "Token:"
-                }
-                Controls.TextField {
-                    id: token
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    text: ""
-                    Layout.alignment: Qt.AlignHCenter
-                }
-                Controls.Button {
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    text: "Add Entry"
-                    onClicked: {
-                        Provider.addEntry(name.text, token.text)
-                        root.pageStack.pop()
-                    }
-                }
+    AddEntry {
+      id: addEntry
+    }
+    
+    Component.onCompleted: {
+        if (addOTP !== 'undefined') {
+            try {
+              // Set the name and token
+              addEntry.name = addOTP.path;
+              addEntry.token = addOTP.secret;
+              
+              root.pageStack.push(addEntry);
+            } catch(err) {
+              console.error(err.message);
             }
         }
     }
