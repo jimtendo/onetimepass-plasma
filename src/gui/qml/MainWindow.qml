@@ -56,6 +56,12 @@ Kirigami.ApplicationWindow {
       id: addEntry
     }
     
+    function deleteEntry(name) {
+      var component = Qt.createComponent("DeleteEntry.qml");
+      var dialog = component.createObject(root);
+      dialog.name = name;
+    }
+    
     Component.onCompleted: {
         if (typeof addOTP !== 'undefined') {
             try {

@@ -62,8 +62,13 @@ Kirigami.AbstractListItem {
                 Layout.fillWidth: true
             }
             Controls.Button {
+                id: removeButton
                 text: "Remove"
-                onClicked: deleteDialog.visible = true
+                onClicked: {
+                  root.deleteEntry(name);
+                  //console.log(parent.deleteDialog);
+                  //root.deleteItem = name
+                }
             }
         }
         Controls.ProgressBar {
@@ -72,19 +77,6 @@ Kirigami.AbstractListItem {
             value: 30 - (+new Date()/1000 % 30)
             from: 0
             to: 30
-        }
-        Controls.Dialog {
-            id: deleteDialog
-            modal: true
-            visible: false
-            title: "Delete Token"
-            standardButtons: Controls.Dialog.Yes | Controls.Dialog.Cancel
-            Controls.Label {
-              width: deleteDialog.availableWidth
-              text: "Are you sure you wish to delete this token?"
-              wrapMode: Controls.Label.Wrap
-            }
-            onAccepted: Provider.removeEntry(name)
         }
         Timer {
             interval: 1000; running: true; repeat: true
