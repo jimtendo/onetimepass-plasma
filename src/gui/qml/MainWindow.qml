@@ -7,12 +7,6 @@ import org.kde.onetimepass.provider 1.0
 Kirigami.ApplicationWindow {
     id: root
     width: 320
-    header: Kirigami.ApplicationHeader {
-      background: Rectangle {
-        anchors.fill: parent
-        color: Kirigami.Theme.highlightColor
-      }
-    }
     pageStack.initialPage: mainPageComponent
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
@@ -63,11 +57,11 @@ Kirigami.ApplicationWindow {
     }
     
     Component.onCompleted: {
-        if (addOTP !== 'undefined') {
+        if (typeof addOTP !== 'undefined') {
             try {
               // Set the name and token
-              addEntry.name = addOTP.path;
-              addEntry.token = addOTP.secret;
+              addEntry.initialName = addOTP.path;
+              addEntry.initialToken = addOTP.secret;
               
               root.pageStack.push(addEntry);
             } catch(err) {

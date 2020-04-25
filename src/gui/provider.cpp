@@ -110,10 +110,22 @@ QVariantMap Provider::addEntry(QString name, QString token)
         m_wallet->createFolder(KWALLET_FOLDER);
     }
     
+    QVariantMap errors;
+    
+    if (!name.length()) {
+        errors["name"] = "Name cannot be empty";
+    }
+    
+    if (!token.length()) {
+        errors["token"] = "Token cannot be empty";
+    }
+    
     if (m_wallet->hasEntry(name)) {
-        return QVariantMap {
-          { "name", "Entry already exists" }
-        };
+        errors["name"] = "Entry already exists";
+    }
+    
+    if (errors.size()) {
+        return errors;
     }
     
     m_wallet->writePassword(name, token);

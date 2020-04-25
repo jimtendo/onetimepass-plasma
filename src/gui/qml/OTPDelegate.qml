@@ -46,12 +46,10 @@ Kirigami.AbstractListItem {
         anchors.leftMargin: 20
         anchors.rightMargin: 20
         RowLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
             ColumnLayout {
                 Controls.Label {
                     id: codeItem
-                    font.pixelSize: 36
+                    font.pointSize: 36
                     color: Kirigami.Theme.activeTextColor
                     //color: listItem.checked || listItem.pressed ? listItem.activeTextColor : listItem.textColor
                 }
@@ -60,21 +58,20 @@ Kirigami.AbstractListItem {
                     color: listItem.checked || listItem.pressed ? listItem.activeTextColor : listItem.textColor
                 }
             }
+            Item {
+                Layout.fillWidth: true
+            }
             Controls.Button {
-                anchors.right: parent.right
                 text: "Remove"
                 onClicked: deleteDialog.visible = true
             }
         }
         Controls.ProgressBar {
+            Layout.fillWidth: true
             id: progressBar
             value: 30 - (+new Date()/1000 % 30)
             from: 0
             to: 30
-            anchors {
-              left: parent.left
-              right: parent.right
-            }
         }
         Controls.Dialog {
             id: deleteDialog
