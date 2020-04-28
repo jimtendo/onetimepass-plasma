@@ -51,7 +51,6 @@ Kirigami.AbstractListItem {
                     id: codeItem
                     font.pointSize: 36
                     color: Kirigami.Theme.activeTextColor
-                    //color: listItem.checked || listItem.pressed ? listItem.activeTextColor : listItem.textColor
                 }
                 Controls.Label {
                     id: nameItem
@@ -66,8 +65,6 @@ Kirigami.AbstractListItem {
                 text: "Remove"
                 onClicked: {
                   root.deleteEntry(name);
-                  //console.log(parent.deleteDialog);
-                  //root.deleteItem = name
                 }
             }
         }
@@ -77,10 +74,10 @@ Kirigami.AbstractListItem {
             value: 30 - (+new Date()/1000 % 30)
             from: 0
             to: 30
-        }
-        Timer {
-            interval: 1000; running: true; repeat: true
-            onTriggered: progressBar.value = 30 - (+new Date()/1000 % 30);
+            Timer {
+                interval: 1000; running: true; repeat: true
+                onTriggered: progressBar.value = 30 - (+new Date()/1000 % 30);
+            }
         }
     }
     

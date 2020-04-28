@@ -32,7 +32,7 @@ MainWindow::MainWindow(int &argc, char **argv) :
     // Create QML Engine
     m_qmlEngine = new QQmlApplicationEngine(this);
     
-    // Check to see if an argument (otpauth URL) was passed
+    // Check to see if an argument (otpauth:// URL) was passed
     if (argc == 2) {
         QVariantMap addOTP = parseOTPAuthURL(argv[1]);
         m_qmlEngine->rootContext()->setContextProperty("addOTP", addOTP);

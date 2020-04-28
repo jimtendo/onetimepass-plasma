@@ -32,7 +32,6 @@ Kirigami.ApplicationWindow {
                 delegate: OTPDelegate {
                     name: modelData.name
                     code: modelData.code
-                    //token: modelData.token
                 }
                 focus: true
             }

@@ -6,6 +6,10 @@ It includes a KRunner that can be triggered by typing "otp" and a QML GUI Manage
 
 OTP Keys are stored in KWallet under the Default KDE Wallet (usually "kdewallet") in a folder titled "onetimepass". 
 
+![App Screenshot](onetimepass.png)
+
+![KRunner Screenshot](krunner.png)
+
 ## Compiling/Building
 
 ### Requirements (Ubuntu 17.10):
